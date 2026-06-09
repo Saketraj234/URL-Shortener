@@ -1,5 +1,6 @@
 const Url = require('../models/Url');
 const { nanoid } = require('nanoid');
+const path = require('path');
 
 const createShortUrl = async (req, res) => {
   try {
@@ -37,7 +38,7 @@ const redirectToOriginalUrl = async (req, res) => {
     const url = await Url.findOne({ shortCode });
     
     if (!url) {
-      return res.status(404).sendFile('expired.html', { root: './public' });
+      return res.status(404).sendFile(path.join(__dirname, '../public/expired.html'));
     }
     
     url.clickCount += 1;
