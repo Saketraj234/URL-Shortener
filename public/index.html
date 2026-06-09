@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkForge - Premium URL Shortener</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="container">
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-icon">🔗</span>
+                LinkForge
+            </div>
+            <button class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#stats">Stats</a></li>
+                <li><a href="#dashboard">Dashboard</a></li>
+            </ul>
+        </nav>
+
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Shorten Your Links,
+                    <span class="gradient-text">Amplify Your Reach</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Premium URL shortener with real-time analytics, QR codes, and automatic 24-hour expiry
+                </p>
+                
+                <div class="url-input-container">
+                    <input 
+                        type="text" 
+                        id="urlInput" 
+                        class="url-input" 
+                        placeholder="Paste your long URL here..."
+                    >
+                    <button id="shortenBtn" class="shorten-btn">
+                        <span class="btn-text">Shorten URL</span>
+                        <span class="btn-loader" style="display: none;">
+                            <div class="spinner"></div>
+                        </span>
+                    </button>
+                </div>
+
+                <div id="shortResult" class="short-result" style="display: none;">
+                    <div class="short-url-card">
+                        <div class="url-display">
+                            <span class="url-label">Your Short URL:</span>
+                            <a id="shortUrlDisplay" href="#" target="_blank" class="short-url"></a>
+                        </div>
+                        <div class="url-actions">
+                            <button id="copyBtn" class="action-btn copy-btn">
+                                <span class="btn-icon">📋</span>
+                                <span class="btn-text">Copy</span>
+                            </button>
+                            <button id="qrBtn" class="action-btn qr-btn">
+                                <span class="btn-icon">📱</span>
+                                <span class="btn-text">QR Code</span>
+                            </button>
+                        </div>
+                        <div id="qrCodeContainer" class="qr-code-container" style="display: none;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="stats" class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="totalUrls">0</div>
+                        <div class="stat-label">Total URLs</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">👆</div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="totalClicks">0</div>
+                        <div class="stat-label">Total Clicks</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🔗</div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="activeLinks">0</div>
+                        <div class="stat-label">Active Links</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features-section">
+            <h2 class="section-title">Why Choose LinkForge?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">Instant Shortening</h3>
+                    <p class="feature-desc">Create short links in milliseconds with our optimized algorithm</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3 class="feature-title">QR Codes</h3>
+                    <p class="feature-desc">Generate scannable QR codes for all your shortened links</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3 class="feature-title">Click Analytics</h3>
+                    <p class="feature-desc">Track and monitor click statistics in real-time</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⏰</div>
+                    <h3 class="feature-title">Auto Expiry</h3>
+                    <p class="feature-desc">Links automatically expire after 24 hours for security</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="dashboard" class="dashboard-section">
+            <h2 class="section-title">URL Dashboard</h2>
+            
+            <div class="search-container">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    class="search-input" 
+                    placeholder="Search URLs..."
+                >
+            </div>
+
+            <!-- Desktop Table View -->
+            <div class="table-container desktop-table">
+                <table class="url-table">
+                    <thead>
+                        <tr>
+                            <th>Original URL</th>
+                            <th>Short URL</th>
+                            <th>Clicks</th>
+                            <th>Created At</th>
+                            <th>Expires In</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="urlTableBody">
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Mobile Card View -->
+            <div class="mobile-cards" id="mobileCards">
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-icon">🔗</span>
+                    LinkForge
+                </div>
+                <p class="footer-text">
+                    <span class="heart-icon">💜</span>
+                    made with saket raj
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-link">
+                        <span class="social-icon">🐦</span>
+                        Twitter
+                    </a>
+                    <a href="#" class="social-link">
+                        <span class="social-icon">💻</span>
+                        GitHub
+                    </a>
+                    <a href="#" class="social-link">
+                        <span class="social-icon">📧</span>
+                        Contact
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
